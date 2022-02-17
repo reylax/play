@@ -1,0 +1,71 @@
+body {
+  background-color: azure;
+}
+
+.outline {
+  width: 300px;
+  height: 200px;
+  background-color: bisque;
+  margin: auto;
+  margin-top: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  animation: rotate-scale-down 3.5s linear;
+  visibility: hidden;
+}
+
+
+@keyframes rotate-scale-up {
+  0% {
+        transform: scale(0.5);
+        visibility: visible;
+        
+  }
+  50% {
+        transform: scale(2);
+  }
+  60% {
+    transform: scale(2) rotateZ(360deg);
+  }
+
+  75% {
+    transform: scale(2) translateY(-200px) rotateZ(270deg);
+  }
+  100% {
+    transform: scale(2) rotateZ(360deg) translateY(-200px) translateX(200px);
+  }
+}
+
+@keyframes rotate-scale-down {
+  0% {
+    transform: scale(0.5);
+    visibility: visible;
+  }
+
+  35% {
+    transform: scale(2);
+  }
+
+  50% {
+    transform: scale(2) rotate(360deg);
+  }
+
+  70% {
+    transform: scale(2) translateX(-200px) rotateZ(360deg);
+  }
+
+  75% {
+    transform: scale(2.5) translateX(-200px) rotateZ(360deg);
+  }
+
+  100% {
+    transform: scale(2) rotateZ(360deg) translateY(200px);
+  }
+}

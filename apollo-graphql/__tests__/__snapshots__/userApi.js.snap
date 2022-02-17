@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`change password do change 1`] = `
+Object {
+  "changePassword": Object {
+    "message": "ok",
+    "status": 202,
+  },
+}
+`;
+
+exports[`change password get code 1`] = `
+Object {
+  "requestEmail": Object {
+    "message": "code have sent",
+    "status": 201,
+  },
+}
+`;
+
+exports[`change password log in with new password 1`] = `
+Object {
+  "login": Object {
+    "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4YjU5ZjMzMTM3YjAzODUwYzUiLCJ1c2VybmFtZSI6ImhhbG8iLCJpYXQiOjE2Mjc1NTExMTYsImV4cCI6MTYzMDE0MzExNn0.qHfpyRhNMeVpAtuoSM7sQMoxGSq8o8rKFkdpwnXc7OXiZr609YTLN0mbQQQqF2QuxcjpDT0xg37iXci7kAeyDA",
+    "status": 201,
+  },
+}
+`;
+
+exports[`change password login with bad password 1`] = `
+Object {
+  "login": Object {
+    "message": "password or username not correct",
+    "status": 400,
+  },
+}
+`;
+
+exports[`change password sign up 1`] = `
+Object {
+  "signUp": Object {
+    "message": "success",
+    "status": 201,
+  },
+}
+`;
+
+exports[`log in with email correct Info 1`] = `
+Object {
+  "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4ODU5ZjMzMTM3YjAzODUwYjMiLCJ1c2VybmFtZSI6ImhlbGxvIiwiaWF0IjoxNjI3NTUxMTE0LCJleHAiOjE2MzAxNDMxMTR9.UD2rjr0PKgMu_gLuhtZs4pdfjCACM2w7NlcY17JVqSp38BJN56UWhUN5YPKDIqupaEBBV5qqb7yRNcaiYHvgNw",
+  "status": 201,
+}
+`;
+
+exports[`log in with email wrong email 1`] = `
+Object {
+  "login": Object {
+    "message": "password or username not correct",
+    "status": 400,
+  },
+}
+`;
+
+exports[`log in with email wrong password 1`] = `
+Object {
+  "login": Object {
+    "message": "password or username not correct",
+    "status": 400,
+  },
+}
+`;
+
+exports[`log in with username bad username 1`] = `
+Object {
+  "login": Object {
+    "message": "password or username not correct",
+    "status": 400,
+  },
+}
+`;
+
+exports[`log in with username correct Info 1`] = `
+Object {
+  "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4ODU5ZjMzMTM3YjAzODUwYjMiLCJ1c2VybmFtZSI6ImhlbGxvIiwiaWF0IjoxNjI3NTUxMTE0LCJleHAiOjE2MzAxNDMxMTR9.UD2rjr0PKgMu_gLuhtZs4pdfjCACM2w7NlcY17JVqSp38BJN56UWhUN5YPKDIqupaEBBV5qqb7yRNcaiYHvgNw",
+  "status": 201,
+}
+`;
+
+exports[`log in with username wrong password 1`] = `
+Object {
+  "login": Object {
+    "message": "password or username not correct",
+    "status": 400,
+  },
+}
+`;
+
+exports[`refresh token get self only info with new token 1`] = `
+Object {
+  "userInfo": Object {
+    "email": "sayhimage@outlook.com",
+    "username": "hello",
+  },
+}
+`;
+
+exports[`refresh token login get token 1`] = `
+Object {
+  "login": Object {
+    "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4ODU5ZjMzMTM3YjAzODUwYjMiLCJ1c2VybmFtZSI6ImhlbGxvIiwiaWF0IjoxNjI3NTUxMTE0LCJleHAiOjE2MzAxNDMxMTR9.UD2rjr0PKgMu_gLuhtZs4pdfjCACM2w7NlcY17JVqSp38BJN56UWhUN5YPKDIqupaEBBV5qqb7yRNcaiYHvgNw",
+    "status": 201,
+  },
+}
+`;
+
+exports[`refresh token refresh new token 1`] = `
+Object {
+  "refreshToken": Object {
+    "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4ODU5ZjMzMTM3YjAzODUwYjMiLCJ1c2VybmFtZSI6ImhlbGxvIiwiaWF0IjoxNjI3NTUxMTE1LCJleHAiOjE2MzAxNDMxMTV9.mz6NxByTkAs4dmZQKJxeTwt-MTH-k5fw-_GaccGhr96B0uWqll5dqOFLi7TWXakUqvX0tOH_e6qjM7UspiYV7g",
+    "status": 201,
+  },
+}
+`;
+
+exports[`request email with correct argument expect success 1`] = `
+Object {
+  "requestEmail": Object {
+    "message": "code have sent",
+    "status": 201,
+  },
+}
+`;
+
+exports[`request email with invalid email 1`] = `
+Object {
+  "requestEmail": Object {
+    "message": "invalid email",
+    "status": 400,
+  },
+}
+`;
+
+exports[`request email with invalid key 1`] = `
+Object {
+  "requestEmail": Object {
+    "message": "invalid key",
+    "status": 400,
+  },
+}
+`;
+
+exports[`request email with invalid purpose 1`] = `
+Object {
+  "requestEmail": Object {
+    "message": "invalid purpose",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up invalid email 1`] = `
+Object {
+  "signUp": Object {
+    "message": "invalid information",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up sign up and wait database create index 1`] = `
+Object {
+  "signUp": Object {
+    "message": "success",
+    "status": 201,
+  },
+}
+`;
+
+exports[`sign up username not start with letter 1`] = `
+Object {
+  "signUp": Object {
+    "message": "invalid information",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up username too long 1`] = `
+Object {
+  "signUp": Object {
+    "message": "invalid information",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up username too short  1`] = `
+Object {
+  "signUp": Object {
+    "message": "invalid information",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up with same email 1`] = `
+Object {
+  "signUp": Object {
+    "message": "email must be unique",
+    "status": 400,
+  },
+}
+`;
+
+exports[`sign up with same name 1`] = `
+Object {
+  "signUp": Object {
+    "message": "username must be unique",
+    "status": 400,
+  },
+}
+`;
+
+exports[`update userInfo with login expect seccess 1`] = `
+Object {
+  "login": Object {
+    "message": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTAyNzU4ODU5ZjMzMTM3YjAzODUwYjMiLCJ1c2VybmFtZSI6ImhlbGxvIiwiaWF0IjoxNjI3NTUxMTE1LCJleHAiOjE2MzAxNDMxMTV9.mz6NxByTkAs4dmZQKJxeTwt-MTH-k5fw-_GaccGhr96B0uWqll5dqOFLi7TWXakUqvX0tOH_e6qjM7UspiYV7g",
+    "status": 201,
+  },
+}
+`;
+
+exports[`update userInfo with login expect seccess 2`] = `
+Object {
+  "updateUser": Object {
+    "message": "ok",
+    "status": 202,
+  },
+}
+`;
+
+exports[`update userInfo without login 1`] = `
+Object {
+  "updateUser": Object {
+    "message": "invalid quest",
+    "status": 400,
+  },
+}
+`;

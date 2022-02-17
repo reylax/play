@@ -1,0 +1,47 @@
+{
+  "name": "apollo-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reylax/AnotherView-apollo-graphql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reylax/AnotherView-apollo-graphql/issues"
+  },
+  "homepage": "https://github.com/reylax/AnotherView-apollo-graphql#readme",
+  "dependencies": {
+    "apollo-datasource-rest": "^3.5.0",
+    "apollo-server-koa": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-subscriptions": "^2.0.0",
+    "ioredis": "^4.27.6",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "mongoose": "^5.13.2",
+    "nodemailer": "^6.6.3",
+    "pbkdf2": "^3.1.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "apollo-link-error": "^1.1.13",
+    "apollo-link-http": "^1.5.17",
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "__utils.js",
+      "__query.js"
+    ]
+  }
+}
