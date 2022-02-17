@@ -16,9 +16,9 @@ export default function useWebRtc() {
     import('peerjs').then(({ default: Peer }) => {
       let peer = new Peer(_id
       ,{
-         host: process.env.webRtcHost,
-         port: process.env.webRtcPort,
-         path: process.env.webRtcPath
+         host: process.env.NEXT_PUBLIC_WEBRTC_HOST,
+         port: process.env.NEXT_PUBLIC_WEBRTC_PORT,
+         path: process.env.NEXT_PUBLIC_WEBRTC_PATH
        }
       )
       setPeer(peer)

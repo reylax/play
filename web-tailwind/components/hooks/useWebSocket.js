@@ -12,7 +12,7 @@ export default function useWebSocket(path) {
   useEffect(() => {
   // Create WebSocket connection.
     if (!path) return 
-    const socket = new WebSocket(`${process.env.webSocketServer}${path}`);
+    const socket = new WebSocket(`${process.env.NEXT_PUBLIC_WEB_SOCKET_SERVER}${path}`);
     setSocket(socket)
     // Connection opened
     socket.addEventListener('open', function () {

@@ -40,7 +40,7 @@ export default function useTencentCOS() {
             Method: "PUT",
             Pathname: path,
         })
-      let url = process.env.bucketUrl + path
+      let url = process.env.NEXT_PUBLIC_BUCKET_URL + path
       try {
         await _postFile(url, auth, Token, file, 'PUT')
         return path 
@@ -69,7 +69,7 @@ export default function useTencentCOS() {
         Method: "delete",
         Pathname: path,
       })
-      let url = process.env.bucketUrl + path
+      let url = process.env.NEXT_PUBLIC_BUCKET_URL + path
       try {
         await _postFile(url, auth, Token, "", 'delete')
       } catch (error) {
