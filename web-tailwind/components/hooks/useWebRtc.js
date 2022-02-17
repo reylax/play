@@ -3,7 +3,7 @@ import { useTheme } from "../../contexts/themeContext"
 
 
 export default function useWebRtc() {
-  const {user: {_id}} = useTheme()
+  const {user: {_id}, setTalkPanelState} = useTheme()
   const [peer, setPeer] = useState(null)
   const [connection, setConnection] = useState(null)
   const [incall, setIncall] = useState(false)
@@ -12,7 +12,7 @@ export default function useWebRtc() {
   const [remoteStream, setRemoteStream] = useState(null)
 
   useEffect(() => {
-    if (!_id) return
+    if (!_id || peer) return
     import('peerjs').then(({ default: Peer }) => {
       let peer = new Peer(_id
       ,{
@@ -59,7 +59,7 @@ export default function useWebRtc() {
 
   const streamCall = ({target_id}) => {
     if (peer.destroyed || peer.disconnected) {
-      console.log("peer conection lost please try again later!")
+      alert("peer conection lost please try again later!")
       return
     }
     console.log('start stream call to:', target_id)
@@ -99,6 +99,7 @@ export default function useWebRtc() {
     });
     setCallerStream(null)
     setRemoteStream(null)
+    setTalkPanelState("init")
   }
 
   const cutOffStream = () => {

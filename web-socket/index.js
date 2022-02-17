@@ -1,12 +1,16 @@
 const { WebSocketServer } = require('ws')
 
+const { pub, sub } = require("./reids.js")
 const wss = new WebSocketServer({ port: 3001 });
 
 var matching_q = []
+const clients = new Map()
+const ptp_channel_name = "sendToOneUser"
 
 
 wss.on('connection', function connection(ws, req) {
-  ws.clientId = parser(req.url)
+  clientId = parser(req.url)
+  clients[clientId] = ws
   ws.on('message', function message(data) {
     data = JSON.parse(data)
     switch (data.type) {
@@ -32,21 +36,30 @@ wss.on('connection', function connection(ws, req) {
 
 
 const sendToOneUser = data => {
-  console.log(data)
-  var i  = 0
-  const { target_id } = data
-  wss.clients.forEach(ws => {
-    i += 1
-    console.log(i, ws.clientId, target_id)
-    console.log(target_id === ws.clientId)
-    if (ws.clientId === target_id) {
-      console.log(`purpose:${data.purpose}`)
-      console.log(`target_id:${target_id}`)
-      console.log(`clientId:${ws.clientId}`)
-      ws.send(JSON.stringify(data))
-    }
-  })
+  pub.publish(ptp_channel_name, JSON.stringify(data))
 }
+
+// receive message from redis
+
+sub.subscribe(ptp_channel_name, (err, count) => {
+  if (err) {
+    console.error(err)
+  } else {
+    console.log(
+      `Subscribed successfully! This client is currently subscribed to ${count} channels.`
+    )
+  }
+})
+
+sub.on("message", (channel, message) => {
+  console.log(`Received ${message} from ${channel}`)
+  if (channel === ptp_channel_name) {
+    const { target_id } = JSON.parse(message)
+    if (clients[target_id] != undefined) {
+      clients[target_id].send(message)
+    }
+  }
+})
 
 const tryfindSomeMatch = () => {
   while (matching_q.length >= 2) {

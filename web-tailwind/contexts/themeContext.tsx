@@ -21,6 +21,7 @@ export default function ThemeProvider({ children, init: {token, updateToken} }) 
   const path = user._id ? `/match/?id=${user._id}` : ""
 
   const [matchSocket, matchSocketSend] = useWebSocket(path)
+  const [TalkPanelState, setTalkPanelState] = useState("init")
 
   const [Lang, setLang] = useState(languages.english)
   const [theme, setTheme] = useState({
@@ -104,6 +105,8 @@ export default function ThemeProvider({ children, init: {token, updateToken} }) 
     setUser,
     matchSocket,
     matchSocketSend,
+    TalkPanelState, 
+    setTalkPanelState
   }
 
   return (

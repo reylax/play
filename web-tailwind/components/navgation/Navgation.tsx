@@ -23,7 +23,7 @@ export default function Navgation() {
             <p className="font-body text-3xl font-semibold hover:cursor-pointe xl:pb-5 lg:pb-2 text-logo">
               { Lang.navBar.siteName }
             </p>
-            <div className="lg:space-y-2.5 xl:space-y-5">
+            <div className="lg:space-y-2.5 xl:space-y-4">
               { items.map(
                   (menu, index) => 
                     <NavItem
@@ -37,7 +37,7 @@ export default function Navgation() {
                     />)
               }
             </div>
-            <section className="lg:mt-5 xl:mt-10">
+            <section className="lg:mt-5 xl:mt-7">
               <div className="">
                   <TalkPanel 
                     videoId={"random"}

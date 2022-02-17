@@ -18,8 +18,7 @@ interface props {
 }
 
 export default function Mediator({callerStream, videoId, remoteStream, streamCall, cutOffStream, stopStreamTrack}:props) {
-  const {user: {_id}, matchSocket, matchSocketSend} = useTheme()
-  const [UIstate, setUIstate] = useState("init")
+  const {user: {_id}, matchSocket, matchSocketSend, TalkPanelState, setTalkPanelState} = useTheme()
   const [matchAccepted, setMathAccepted] = useState(false)
   const [matchAcceptedBy, setMathAcceptedBy] = useState(false)
   const [targetId, setTargetId] = useState("")
@@ -40,6 +39,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
     if (remoteStream) {
       remote.play()
       router.push(`/talk?videoId=${videoId}&&targetId=${targetId}`)
+      setTalkPanelState("talking")
     }
   }, [remoteStream])
 
@@ -49,7 +49,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
       case "match_success":
         console.log("catchSomeOne", message.sender_id)
         setTargetId(message.sender_id)
-        setUIstate("matched")
+        setTalkPanelState("matched")
         break;
       case "deny_match":
         console.log("matchCanceledBy", message.sender_id)
@@ -60,7 +60,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
         console.log("mathAcceptedBy", message.sender_id)
         setMathAcceptedBy(true)
         if (matchAccepted) {
-          setUIstate("conncting")
+          setTalkPanelState("conncting")
           streamCall({target_id: targetId})
           console.log(`talk to ${_id} ${message.sender_id}`)
         }
@@ -70,7 +70,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
         setMathAccepted(false)
         setMathAcceptedBy(false)
         stopStreamTrack()
-        setUIstate("init")  
+        setTalkPanelState("init")  
         break
       case "sent_gift":
         console.log("received a gift!")
@@ -87,7 +87,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
     }
     setMathAccepted(false)
     setMathAcceptedBy(false)
-    setUIstate("matching")
+    setTalkPanelState("matching")
     matchSocketSend({
       type: "matching",
       sender_id: _id,
@@ -95,7 +95,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
   }
   
   const quit_matching = () => {
-    setUIstate("init")
+    setTalkPanelState("init")
     setMathAccepted(false)
     setMathAcceptedBy(false)
     matchSocketSend({
@@ -108,7 +108,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
     if (!targetId) return
     setMathAccepted(true)
     if (matchAcceptedBy) {
-      setUIstate("conncting")
+      setTalkPanelState("conncting")
     }
     matchSocketSend({
       type: "ptp",
@@ -119,7 +119,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
   }
 
   const deny_match = targetId => {
-    setUIstate("init")
+    setTalkPanelState("init")
     setMathAccepted(false)
     setMathAcceptedBy(false)
     if (targetId) {
@@ -134,7 +134,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
   }
 
   const cut_off = targetId => {
-    setUIstate("init")
+    setTalkPanelState("init")
     stopStreamTrack()
     if (targetId) {
       matchSocketSend({
@@ -151,7 +151,7 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
   }
 
   var component
-  switch (UIstate) {
+  switch (TalkPanelState) {
     case "init":
       component=
         <Idicator 
