@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
   const [token, setToken] = useState(getItem("token") || "")
 
   const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: process.env.apolloServer,
     cache,
     headers: {
       "authorization": token

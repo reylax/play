@@ -40,6 +40,10 @@ export default function Mediator({callerStream, videoId, remoteStream, streamCal
       remote.play()
       router.push(`/talk?videoId=${videoId}&&targetId=${targetId}`)
       setTalkPanelState("talking")
+      remoteStream.onended(() => {
+        console.log("they guy you are taling to cut off the conversation.")
+        setTalkPanelState("init")
+      }) 
     }
   }, [remoteStream])
 

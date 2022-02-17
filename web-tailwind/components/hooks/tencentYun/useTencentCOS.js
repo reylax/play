@@ -11,10 +11,6 @@ const GET_TENCENT_KEY = gql`
   }
 `
 
-var Bucket = "avatar-1305219845";
-var Region = 'ap-shanghai';
-export const prefix =  'https://' + Bucket + '.cos.' + Region + '.myqcloud.com';
-
 export default function useTencentCOS() {
 
   const [upLoadingRate, setUpLoadingRate] = useState(0)
@@ -44,7 +40,7 @@ export default function useTencentCOS() {
             Method: "PUT",
             Pathname: path,
         })
-      let url = prefix + path
+      let url = process.env.bucketUrl + path
       try {
         await _postFile(url, auth, Token, file, 'PUT')
         return path 
@@ -73,7 +69,7 @@ export default function useTencentCOS() {
         Method: "delete",
         Pathname: path,
       })
-      let url = prefix + path
+      let url = process.env.bucketUrl + path
       try {
         await _postFile(url, auth, Token, "", 'delete')
       } catch (error) {

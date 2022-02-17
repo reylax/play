@@ -3,7 +3,7 @@ import { useTheme } from "../../contexts/themeContext"
 
 
 export default function useWebRtc() {
-  const {user: {_id}, setTalkPanelState} = useTheme()
+  const {user: {_id}} = useTheme()
   const [peer, setPeer] = useState(null)
   const [connection, setConnection] = useState(null)
   const [incall, setIncall] = useState(false)
@@ -16,9 +16,9 @@ export default function useWebRtc() {
     import('peerjs').then(({ default: Peer }) => {
       let peer = new Peer(_id
       ,{
-         host: "localhost",
-         port: 9000,
-         path: '/myapp'
+         host: process.env.webRtcHost,
+         port: process.env.webRtcPort,
+         path: process.env.webRtcPath
        }
       )
       setPeer(peer)
@@ -99,7 +99,6 @@ export default function useWebRtc() {
     });
     setCallerStream(null)
     setRemoteStream(null)
-    setTalkPanelState("init")
   }
 
   const cutOffStream = () => {
