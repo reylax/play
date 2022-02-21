@@ -6,7 +6,7 @@ interface props {
 }
 
 
-export default function matching({cancel}:props) {
+export default function Matching({cancel}:props) {
   const [timeElips, setTimeElips] = useState(0)
 
   useEffect(() => {

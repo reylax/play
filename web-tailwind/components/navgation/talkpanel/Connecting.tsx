@@ -6,7 +6,7 @@ interface props {
 }
 
 export default function Connecting({timeOut}:props) {
-  const [timeOutLeft, setTimeOutLeft] = useState(7)
+  const [timeOutLeft, setTimeOutLeft] = useState(15)
   
   useEffect(() => {
     const id = setInterval(() => setTimeOutLeft(prev => prev-1), 1000)

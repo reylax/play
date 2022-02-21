@@ -8,12 +8,12 @@ interface props {
 
 export default function Matched({accept, deny}:props) {
 
-  // useEffect(() => {
-  //   const id = setTimeout(() => { deny() }, 15000)
-  //   return () => {
-  //     clearTimeout(id)
-  //   }
-  // }, [])
+  useEffect(() => {
+    const id = setTimeout(() => { deny() }, 15000)
+    return () => {
+      clearTimeout(id)
+    }
+  }, [])
 
   return (
     <div className="space-y-5">

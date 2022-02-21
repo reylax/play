@@ -18,8 +18,7 @@ export default function ThemeProvider({ children, init: {token, updateToken} }) 
     liked: new Set(),
   })
 
-  const path = user._id ? `/match/?id=${user._id}` : ""
-
+  const path = user._id ? `${process.env.NEXT_PUBLIC_MATCH_WEBSOCKET_PATH}/?id=${user._id}` : ""
   const [matchSocket, matchSocketSend] = useWebSocket(path)
   const [TalkPanelState, setTalkPanelState] = useState("init")
 

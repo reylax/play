@@ -5,9 +5,10 @@ import VideoCaption from "./VideoCaption"
 
 interface props {
   pedicts: any[]
+  close: Function
 }
 
-export default function PedictCards ({ pedicts }:props) {
+export default function PedictCards ({ pedicts, close }:props) {
   const [pickedTerm, setPickedTerm] = useState(-1)
   const router = useRouter()
 
@@ -35,6 +36,7 @@ export default function PedictCards ({ pedicts }:props) {
               ;
           }
           router.push(url)
+          close()
         }
         break
       default:
@@ -77,6 +79,7 @@ export default function PedictCards ({ pedicts }:props) {
           }
           return (
             <div className={`${pickedTerm===index ? "bg-gray-200" : ""} cursor-pointer`}
+              key={index}
               onMouseOver={() => setPickedTerm(index)}
             >
               {term}

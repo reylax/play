@@ -9,7 +9,7 @@ const ptp_channel_name = "sendToOneUser"
 
 
 wss.on('connection', function connection(ws, req) {
-  clientId = parser(req.url)
+  let clientId = parser(req.url)
   clients[clientId] = ws
   ws.on('message', function message(data) {
     data = JSON.parse(data)

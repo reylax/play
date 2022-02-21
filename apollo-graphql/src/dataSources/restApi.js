@@ -9,7 +9,7 @@ class RestAPI extends RESTDataSource {
     super();
     this.model = model
     // Sets the base URL for the REST API
-    this.baseURL = 'http://localhost:8080';
+    this.baseURL = 'http://localhost:8000';
   }
 
   async requestTencentYunKey({ purpose, _id, fileExtention }) {

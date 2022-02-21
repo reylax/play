@@ -61,7 +61,10 @@ export default function PageSearchBar() {
                   setFcoused(true) 
                   setShowPedictCard(true)
                 }} 
-                onBlur={ () => setFcoused(false) }
+                onBlur={ () => { 
+                  setFcoused(false) 
+                  setShowPedictCard(false)
+                }}
                 type="text" 
                 placeholder="Serach Interest" 
                 value={value}
@@ -70,7 +73,9 @@ export default function PageSearchBar() {
             </div>
             { showPedictCard && 
               <div className="absolute left-0 top-8 mt-px w-full bg-bg-default shadow-lg rounded-lg z-10">
-                <PedictCards pedicts={searchPedicts} />
+                <PedictCards pedicts={searchPedicts} 
+                 close={() => setShowPedictCard(false)}
+                />
               </div>
             }
           </section>

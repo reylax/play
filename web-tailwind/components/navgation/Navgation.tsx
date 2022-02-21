@@ -23,7 +23,7 @@ export default function Navgation() {
             <p className="font-body text-3xl font-semibold hover:cursor-pointe xl:pb-5 lg:pb-2 text-logo">
               { Lang.navBar.siteName }
             </p>
-            <div className="lg:space-y-2.5 xl:space-y-4">
+            <div className="2xl:space-y-4 lg:space-y-2.5">
               { items.map(
                   (menu, index) => 
                     <NavItem

@@ -54,7 +54,7 @@ export default function useWebRtc() {
         peer.reconnect()
       })
     })
-  }, [_id])
+  }, [_id, peer])
 
 
   const streamCall = ({target_id}) => {

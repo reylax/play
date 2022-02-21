@@ -65,7 +65,8 @@ export default function Talk({videoId, targetId}:props) {
       <section className="h-14 flex items-center justify-center">
         {
           gifts.map(({id, imageUrl}) => 
-          <Gift 
+          <Gift
+            key={id}
             giftId={id}
             imageUrl={imageUrl}
             targetId={targetId}

@@ -42,15 +42,15 @@ export default function HomeLayout({ Page } : prop) {
     }, [])
 
 
-    const isPc = viewport.width > 1340
+    const isPc = viewport.width >= 1280
     const isIpad = viewport.width > 1000
     const isPhone = viewport.width <= 1000
 
     var leftWidth, mainWidth, rightWidth
     if (isPc) {
-        leftWidth = 400 
-        mainWidth = 620
-        rightWidth = 280
+        leftWidth = 380 
+        mainWidth = 600
+        rightWidth = 250
     } else if (isIpad) {
         leftWidth = 300 
         mainWidth = 480
