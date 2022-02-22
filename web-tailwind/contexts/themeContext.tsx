@@ -48,7 +48,7 @@ export default function ThemeProvider({ children, init: {token, updateToken} }) 
       setUser(prev => ({
         ...prev,
         ...data.initUserSelf,
-        liked: new Set(data.initUserSelf.liked),
+        liked: new Set(data.initUserSelf?.liked),
       }))
     },
     onError: error => console.log(error.message)
