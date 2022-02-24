@@ -1,7 +1,9 @@
+require('dotenv').config()
+
 const { WebSocketServer } = require('ws')
 
 const { pub, sub } = require("./reids.js")
-const wss = new WebSocketServer({ port: 3001 });
+const wss = new WebSocketServer({ port: process.env.PORT || 3000 });
 
 var matching_q = []
 const clients = new Map()

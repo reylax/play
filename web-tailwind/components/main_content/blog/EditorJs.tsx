@@ -4,7 +4,7 @@ import Header from '@editorjs/header'
 import Marker from '@editorjs/marker'
 import ImageTool from '@editorjs/image'
 import Embed from '@editorjs/embed'
-import { useEffect } from 'react'
+
 
 interface props {
   data: string

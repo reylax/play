@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { RESTDataSource } = require('apollo-datasource-rest');
 const { v4: uuidv4 } = require('uuid');
 
@@ -9,8 +10,9 @@ class RestAPI extends RESTDataSource {
     super();
     this.model = model
     // Sets the base URL for the REST API
-    this.baseURL = 'http://localhost:8000';
+    this.baseURL = process.env.TENCENT_COS_SIG_SERVER;
   }
+
 
   async requestTencentYunKey({ purpose, _id, fileExtention }) {
     let user = await this.model.findOne({_id})

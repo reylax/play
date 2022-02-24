@@ -2,23 +2,24 @@ package main
 
 import (
 	"fmt"
-	// "os"
+	"os"
 	"encoding/json"
 	"local/sts"
 	"net/http"
+	"github.com/joho/godotenv"
 )
 
-var appid = "1305219845"
-var bucket = "avatar-1305219845"
-var secretKey = "ayBCpSqzHI9rMbLr6879xUghTs1tYyDN"
-var secretId = "AKIDtXzMW9J8oeFcQNbdcixzSgz5J7jvxVnQ"
-
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Error loading .env file")
+	}
+
+	appid := os.Getenv("COS_APPID")
+	bucket := os.Getenv("COS_BUCKET")
 	c := sts.NewClient(
-		// os.Getenv("COS_SECRETID"),
-		// os.Getenv("COS_SECRETKEY"),
-		secretId,
-		secretKey,
+		os.Getenv("COS_SECRETID"),
+		os.Getenv("COS_SECRETKEY"),
 		nil,
 	)
 	// 设置域名, 默认域名sts.tencentcloudapi.com
@@ -28,7 +29,7 @@ func main() {
 		params := req.URL.Query()
 		path := params["path"][0]
 		fmt.Println(path)
-		res, err := c.GetCredential(config(path))
+		res, err := c.GetCredential(config(path, appid, bucket))
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -44,10 +45,10 @@ func main() {
 
 	http.HandleFunc("/getkey", requestKey)
 	http.Handle("/", http.FileServer(http.Dir(".")))
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":" + os.Getenv("PORT"), nil)
 }
 
-func config(path string) *sts.CredentialOptions {
+func config(path, appid, bucket string, ) *sts.CredentialOptions {
 	opt := &sts.CredentialOptions{
 		DurationSeconds: int64(1800),
 		Region:          "ap-shanghai",

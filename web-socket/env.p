@@ -1,4 +1,4 @@
 redisPort=6379
-redisHost=localhost
+redisHost=redis
 
 PORT=4001

@@ -1,6 +1,6 @@
-mongoHost=mongodb://localhost:27017/test
+mongoHost=mongodb://mongo:27017/test
 redisPort=6379
-redisHost=localhost
+redisHost=redis
 
 bucketUrl=https://avatar-1305219845.cos.ap-shanghai.myqcloud.com
 
@@ -11,5 +11,5 @@ replyEmailAddress=sayhimage@outlook.com
 sentEmailKey=5234518
 PORT=4000
 
-TENCENT_COS_SIG_SERVER=http://localhost:10001
+TENCENT_COS_SIG_SERVER=http://tencent-cos-sig:10001
 

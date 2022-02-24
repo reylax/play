@@ -3,7 +3,7 @@ import { useTheme } from '../../../contexts/themeContext';
 import LockScreen  from '../../containers/LockScreen';
 import ProcfileEditor  from './ProfileEditor';
 import { gql, useLazyQuery} from "@apollo/client";
-import PageSearchBar from '../../searchbar/SearchBar';
+
 
 
 
@@ -20,7 +20,7 @@ const GET_USER_INFO = gql`
 `
 
 interface props {
-  username: string
+  username: string | string[]
 }
 
 export default function Profile({ username }:props) {

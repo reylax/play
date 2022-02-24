@@ -1,23 +1,47 @@
 version: "3.9"
 
 services:
-  api:
-    build: .
+  app-front:
+    image: exdous/nginx-front:0.0.1
     ports: 
-      - "4000:4000"
-    command: node src/index.js
-    env_file: 
-      - p.env
+      - "80:80"
+    depends_on:
+      - apollo
+      - web-socket
+      - webrtc
+
+  apollo:
+    image: exdous/apollo:0.0.1
+    # ports:
+    #   - "4000:4000"
     depends_on: 
       - redis
       - mongo
+      - tencent-cos-sig
+
+  web-socket:
+    image: exdous/web-socket:0.0.1
+    # ports:
+    #   - "4001:4001"
+    depends_on:
+      - redis
+
+  webrtc:
+    image: exdous/webrtc:0.0.1
+    # ports:
+    #   - "4002:4002"
+
+  tencent-cos-sig:
+    image: exdous/tencent-cos-signature:0.0.1
+    # ports:
+    #   - "10001:10001"
 
   redis:
     image: redis:6.2.5-alpine
     restart: always
     command: redis-server --appendonly yes
-    ports:
-      - "6380:6379"
+    # ports:
+    #   - "6379:6379"
     volumes:
       - redis-data:/data
     deploy:
@@ -29,12 +53,12 @@ services:
         condition: on-failure
 
   mongo:
-    image: mongo:5-focal
+    image: mongo:5.0.6
     restart: always
     volumes:
       - mongo-data:/data/db
-    ports: 
-      - "27018:27017"
+    # ports: 
+    #   - "27017:27017"
     deploy:
       replicas: 1
       placement:
